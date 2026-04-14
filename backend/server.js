@@ -63,17 +63,49 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
-// Database Connection
+// Database Connection with Connection Pooling
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/hospital-db', {
+      // Connection pooling for production
+      maxPoolSize: 10,
+      minPoolSize: 5,
+      maxIdleTimeMS: 45000,
+      waitQueueTimeoutMS: 10000,
+      
+      // Timeouts
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 45000,
+      
+      // Reliability
+      retryWrites: true,
+      w: 'majority',
+      
+      // Legacy options
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
+    
     console.log(`✅ MongoDB connected: ${conn.connection.host}`);
+    
+    // Handle connection events
+    mongoose.connection.on('connected', () => {
+      console.log('✅ Mongoose connected to MongoDB');
+    });
+    
+    mongoose.connection.on('error', (err) => {
+      console.error('❌ MongoDB connection error:', err);
+    });
+    
+    mongoose.connection.on('disconnected', () => {
+      console.warn('⚠️  MongoDB disconnected');
+    });
+    
   } catch (error) {
     console.error(`❌ MongoDB connection error: ${error.message}`);
-    process.exit(1);
+    // Retry connection after 5 seconds
+    console.log('🔄 Retrying connection in 5 seconds...');
+    setTimeout(connectDB, 5000);
   }
 };
 
