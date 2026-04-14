@@ -5,7 +5,7 @@ export const doctors = [
       specialty: "Cardiology",
       bio: "Board certified cardiologist with 15 years of experience in interventional cardiology and heart failure management.",
       experience: "15 years",
-      education : "University of Lagos College of Medicine",
+      education : "Redeemers University",
       languages: ["English", "Yoruba"],
       rating: 4.9,
       patients: 800
@@ -16,7 +16,7 @@ export const doctors = [
       specialty: "Neurology",
       bio: "Specializes in movement disorders, epilepsy, and neurophysiology with expertise in deep brain stimulation.",
       experience: "12 years",
-      education : "University of Nigeria College of Medicine",
+      education : "University of Ilorin",
       languages: ["English", "Igbo"],
       rating: 4.8,
       patients: 600
@@ -34,11 +34,11 @@ export const doctors = [
     },
     {
       id: 4,
-      name: "Dr. James Wilson",
+      name: "Dr. James Adedapo",
       specialty: "Orthopedic Surgery",
       bio: "Expert in joint replacement, sports medicine, and minimally invasive orthopedic procedures.",
       experience: "18 years",
-      education : "Obafemi Awolowo University College of Health Sciences",
+      education : "Obafemi Awolowo University",
       languages: ["English", "Yoruba"],
       rating: 4.7,
       patients: 500
@@ -49,18 +49,18 @@ export const doctors = [
       specialty: "Obstetrics & Gynecology",
       bio: "Comprehensive women's health care including high-risk pregnancies and gynecological surgery.",
       experience: "11 years",
-      education : "University of Ibadan College of Medicine",
+      education : "University of Ibadan ",
       languages: ["English", "Igbo"],
       rating: 4.9,
       patients: 700
     },
     {
       id: 6,
-      name: "Dr. David Kim",
+      name: "Dr. David Obafemi",
       specialty: "Oncology",
       bio: "Medical oncologist specializing in breast cancer, lung cancer, and personalized treatment plans.",
       experience: "14 years",
-      education : "Lagos State University College of Medicine",
+      education : "Lagos State University",
       languages: ["English", "Yoruba"],
       rating: 4.8,
       patients: 300

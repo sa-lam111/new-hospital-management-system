@@ -32,7 +32,7 @@ export default function HeartHealthyTips() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-green-50 via-white to-green-100 min-h-screen py-12 px-4">
+    <div className="bg-gradient-to-br from-blue-50 via-white to-indigo-100 min-h-screen py-12 px-4">
       <motion.div
         className="max-w-3xl mx-auto bg-white rounded-2xl shadow-2xl p-10"
         initial={{ opacity: 0, y: 40 }}
@@ -45,7 +45,7 @@ export default function HeartHealthyTips() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.7 }}
         >
-          <h1 className="text-4xl font-extrabold text-green-700 mb-2 text-center drop-shadow">5 Tips for a Heart-Healthy Diet</h1>
+          <h1 className="text-4xl font-extrabold text-indigo-700 mb-2 text-center drop-shadow">5 Tips for a Heart-Healthy Diet</h1>
           <p className="text-lg text-gray-700 text-center max-w-xl">
             Eating well is one of the best ways to protect your heart and overall health. Here are five practical tips to help you build a heart-healthy diet.
           </p>
@@ -54,16 +54,16 @@ export default function HeartHealthyTips() {
           {tips.map((tip, idx) => (
             <motion.div
               key={idx}
-              className="flex flex-col items-center bg-green-50 rounded-xl shadow p-6 border-t-4 border-green-200 cursor-pointer select-none"
+              className="flex flex-col items-center bg-blue-50 rounded-xl shadow p-6 border-t-4 border-indigo-200 cursor-pointer select-none"
               whileHover={{ scale: 1.04 }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + idx * 0.1, duration: 0.5 }}
               onClick={() => handleToggle(idx)}
             >
-              <h2 className="text-xl font-bold text-green-600 mb-2 text-center flex items-center justify-center">
+              <h2 className="text-xl font-bold text-indigo-600 mb-2 text-center flex items-center justify-center">
                 {tip.title}
-                <span className="ml-2 text-base text-green-400">{openIdx === idx ? '▲' : '▼'}</span>
+                <span className="ml-2 text-base text-indigo-400">{openIdx === idx ? '▲' : '▼'}</span>
               </h2>
               <motion.div
                 initial={false}

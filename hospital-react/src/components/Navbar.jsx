@@ -1,47 +1,101 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { useAuth } from '../context/AuthContext';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
+  const dashboardPath = user?.userType === 'admin'
+    ? '/admin-dashboard'
+    : user?.userType === 'doctor'
+      ? '/doctor-dashboard'
+      : '/patient';
 
   return (
-    <header className="bg-green-800 text-white shadow-md">
-      <div className="w-full px-0 py-3 flex justify-between items-center">
-        <Link to="/" className="flex items-center text-2xl font-extrabold tracking-tight">
-          <img
-            src="https://th.bing.com/th/id/OIP.6m-iZ9HuKV8rOO36Ft6V6gHaEP?w=258&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
-            alt="Medical Logo"
-            className="h-10 w-10 mr-3 drop-shadow-md bg-white rounded-full p-1"
-            style={{ marginLeft: 0 }}
-          />
-          <span className="align-middle">Medicare</span>
-        </Link>
-        
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-6 items-center">
-          <Link to="/" className="hover:underline px-4 py-2">Home</Link>
-          <Link to="/doctors" className="hover:underline px-4 py-2">Doctors</Link>
-          <Link to="/services" className="hover:underline px-4 py-2">Services</Link>
-          <div className="relative group">
-            <button className="hover:underline px-4 py-2 flex items-center focus:outline-none">
-              Resources
-              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-            </button>
-            <div className="absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded shadow-lg opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity z-20">
-              <Link to="/about" className="block px-4 py-2 hover:bg-gray-100">About</Link>
-              <Link to="/pregnancy" className="block px-4 py-2 hover:bg-gray-100">Pregnancy Care</Link>
-              <Link to="/menstrual-calculator" className="block px-4 py-2 hover:bg-gray-100">Menstrual Calculator</Link>
-              <Link to="/contact" className="block px-4 py-2 hover:bg-gray-100">Contact</Link>
-            </div>
+    <header className="bg-white text-gray-800 shadow-md sticky top-0 z-50 border-b border-blue-100">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2">
+          <div className="h-10 w-10 bg-gradient-to-br from-indigo-600 to-blue-700 rounded-full flex items-center justify-center shadow-md">
+            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+            </svg>
           </div>
-          <Link to="/book-appointment" className="bg-green-600 px-4 py-2 rounded hover:bg-green-700 font-semibold shadow">Book Appointment</Link>
-          <Link to="/login" className="bg-white text-green-700 px-4 py-2 rounded hover:bg-green-50 border border-green-600 font-semibold">Login</Link>
+          <span className="font-bold text-xl text-indigo-700 hidden sm:inline">Healthcare Hospital</span>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-8">
+          <Link to="/" className="text-gray-700 hover:text-indigo-600 transition-colors font-medium">
+            Home
+          </Link>
+          <Link to="/doctors" className="text-gray-700 hover:text-indigo-600 transition-colors font-medium">
+            Specialities
+          </Link>
+          <Link to="/services" className="text-gray-700 hover:text-indigo-600 transition-colors font-medium">
+            Services
+          </Link>
+          <Link to="/about" className="text-gray-700 hover:text-indigo-600 transition-colors font-medium">
+            About
+          </Link>
+          <Link to="/contact" className="text-gray-700 hover:text-indigo-600 transition-colors font-medium">
+            Contact Us
+          </Link>
         </nav>
+
+        {/* Right Section */}
+        <div className="hidden md:flex items-center gap-4">
+          {user ? (
+            <>
+              <Link 
+                to={dashboardPath}
+                className={`px-6 py-2 text-white rounded-lg transition-colors font-semibold shadow-sm bg-indigo-600 hover:bg-indigo-700`}
+              >
+                Dashboard
+              </Link>
+              <div className="relative group">
+                <button className="px-4 py-2 text-gray-700 font-medium hover:text-indigo-600 transition-colors">
+                  {user.name}
+                </button>
+                <div className="absolute right-0 mt-0 w-48 bg-white rounded-lg shadow-xl opacity-0 group-hover:opacity-100 group-hover:visible invisible transition-all z-20 border border-gray-200">
+                  <button 
+                    onClick={handleLogout} 
+                    className="block w-full text-left px-4 py-3 text-red-600 hover:bg-red-50 font-semibold rounded-lg transition-colors"
+                  >
+                    Logout
+                  </button>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <Link 
+                to="/book-appointment" 
+                className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-semibold shadow-sm"
+              >
+                Book Appointment
+              </Link>
+              <Link 
+                to="/login" 
+                className="px-6 py-2 text-indigo-600 border-2 border-indigo-600 rounded-lg hover:bg-blue-50 transition-colors font-semibold"
+              >
+                Login
+              </Link>
+            </>
+          )}
+        </div>
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden p-2"
+          className="md:hidden p-2 text-gray-700"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? (
@@ -54,21 +108,54 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-primary-dark px-4 py-2">
-          <Link to="/" className="block py-2 hover:underline">Home</Link>
-          <Link to="/doctors" className="block py-2 hover:underline">Doctors</Link>
-          <Link to="/services" className="block py-2 hover:underline">Services</Link>
-          <details className="py-2">
-            <summary className="cursor-pointer font-semibold">Resources</summary>
-            <div className="pl-4">
-              <Link to="/about" className="block py-2 hover:underline">About</Link>
-              <Link to="/pregnancy" className="block py-2 hover:underline">Pregnancy Care</Link>
-              <Link to="/menstrual-calculator" className="block py-2 hover:underline">Menstrual Calculator</Link>
-              <Link to="/contact" className="block py-2 hover:underline">Contact</Link>
-            </div>
-          </details>
-          <Link to="/book-appointment" className="block py-2 bg-green-600 text-white rounded my-2 text-center font-semibold">Book Appointment</Link>
-          <Link to="/login" className="block py-2 bg-white text-green-700 rounded border border-green-600 text-center font-semibold">Login</Link>
+        <div className="md:hidden bg-blue-50 border-t border-blue-200 px-4 py-4 space-y-4">
+          <Link to="/" className="block text-gray-700 hover:text-indigo-600 font-medium py-2">
+            Home
+          </Link>
+          <Link to="/doctors" className="block text-gray-700 hover:text-indigo-600 font-medium py-2">
+            Specialities
+          </Link>
+          <Link to="/services" className="block text-gray-700 hover:text-indigo-600 font-medium py-2">
+            Services
+          </Link>
+          <Link to="/about" className="block text-gray-700 hover:text-indigo-600 font-medium py-2">
+            About
+          </Link>
+          <Link to="/contact" className="block text-gray-700 hover:text-indigo-600 font-medium py-2">
+            Contact Us
+          </Link>
+          
+          {user ? (
+            <>
+              <Link 
+                to={dashboardPath}
+                className={`block py-2 text-white rounded-lg text-center font-semibold transition-colors bg-indigo-600 hover:bg-indigo-700`}
+              >
+                Dashboard
+              </Link>
+              <button 
+                onClick={handleLogout} 
+                className="block w-full py-2 bg-red-600 text-white rounded-lg text-center font-semibold hover:bg-red-700 transition-colors"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link 
+                to="/book-appointment" 
+                className="block py-2 bg-indigo-600 text-white rounded-lg text-center font-semibold hover:bg-indigo-700 transition-colors"
+              >
+                Book Appointment
+              </Link>
+              <Link 
+                to="/login" 
+                className="block py-2 text-indigo-600 border-2 border-indigo-600 rounded-lg text-center font-semibold hover:bg-blue-50 transition-colors"
+              >
+                Login
+              </Link>
+            </>
+          )}
         </div>
       )}
     </header>

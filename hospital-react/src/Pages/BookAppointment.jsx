@@ -25,10 +25,10 @@ export default function BookAppointment() {
 
   if (submitted) {
     return (
-      <div className="bg-green-100 min-h-screen">
+      <div className="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
         <div className="container mx-auto px-4 py-12 max-w-lg">
-          <div className="bg-white rounded-xl shadow-lg p-8 text-center">
-            <h2 className="text-2xl font-bold text-green-700 mb-4">Appointment Booked!</h2>
+          <div className="bg-white rounded-2xl shadow-lg p-8 text-center border border-blue-100">
+            <h2 className="text-2xl font-bold text-indigo-700 mb-4">Appointment Booked!</h2>
             <p className="text-gray-700 mb-2">Thank you, {form.name}. Your appointment for <span className="font-semibold">{form.service}</span> on <span className="font-semibold">{form.date}</span> at <span className="font-semibold">{form.time}</span> has been received.</p>
             <p className="text-gray-500">We will contact you soon for confirmation.</p>
           </div>
@@ -38,10 +38,10 @@ export default function BookAppointment() {
   }
 
   return (
-    <div className="bg-gray-200 min-h-screen">
+    <div className="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
       <div className="container mx-auto px-4 py-12 max-w-lg">
-        <div className="bg-white rounded-xl shadow-lg p-8">
-          <h2 className="text-3xl font-bold text-primary mb-6 text-center">Book an Appointment</h2>
+        <div className="bg-white rounded-2xl shadow-lg p-8 border border-blue-100">
+          <h2 className="text-3xl font-bold text-indigo-700 mb-6 text-center">Book an Appointment</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-gray-700 mb-1">Full Name</label>
@@ -51,7 +51,7 @@ export default function BookAppointment() {
                 value={form.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2 border border-blue-300 rounded focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               />
             </div>
             <div>
@@ -62,7 +62,7 @@ export default function BookAppointment() {
                 value={form.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2 border border-blue-300 rounded focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               />
             </div>
             <div>
@@ -73,7 +73,7 @@ export default function BookAppointment() {
                 value={form.phone}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2 border border-blue-300 rounded focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               />
             </div>
             <div>
@@ -83,7 +83,7 @@ export default function BookAppointment() {
                 value={form.service}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2 border border-blue-300 rounded focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               >
                 <option value="">Select a service</option>
                 {services.map((s) => (
@@ -127,7 +127,7 @@ export default function BookAppointment() {
             </div>
             <button
               type="submit"
-              className="w-full bg-green-700 text-white py-3 rounded-lg font-bold text-lg shadow hover:bg-primary/90 transition-colors"
+              className="w-full bg-indigo-700 text-white py-3 rounded-lg font-bold text-lg shadow hover:bg-indigo-800 transition-colors\"
             >
               Book Appointment
             </button>

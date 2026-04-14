@@ -40,7 +40,7 @@ export default function DoctorProfile() {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen">
         <h2 className="text-2xl font-bold text-red-700 mb-4">Doctor not found</h2>
-        <button onClick={() => navigate('/doctors')} className="bg-green-700 text-white px-6 py-3 rounded-lg font-bold text-lg shadow hover:bg-green-800 transition-colors">Back to Doctors</button>
+        <button onClick={() => navigate('/doctors')} className="bg-indigo-700 text-white px-6 py-3 rounded-lg font-bold text-lg shadow hover:bg-indigo-800 transition-colors">Back to Doctors</button>
       </div>
     );
   }
@@ -50,7 +50,7 @@ export default function DoctorProfile() {
       <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-2xl p-10">
         <div className="flex flex-col md:flex-row gap-8 items-center mb-6">
           <div>
-            <h2 className="text-3xl font-bold text-green-800 mb-2">{doctor.name}</h2>
+            <h2 className="text-3xl font-bold text-indigo-800 mb-2">{doctor.name}</h2>
             <div className="mb-2 text-gray-700">{doctor.bio}</div>
             <div className="mb-2"><span className="font-semibold">Specialty:</span> {doctor.specialty}</div>
             <div className="mb-2"><span className="font-semibold">Experience:</span> {doctor.experience}</div>
@@ -60,7 +60,7 @@ export default function DoctorProfile() {
           </div>
         </div>
         <div className="mb-6">
-          <h3 className="text-xl font-bold text-green-700 mb-2">Areas of Expertise</h3>
+          <h3 className="text-xl font-bold text-indigo-700 mb-2">Areas of Expertise</h3>
           <ul className="list-disc pl-6 text-gray-700">
             <li>{doctor.specialty}</li>
             <li>General Medicine</li>
@@ -68,7 +68,7 @@ export default function DoctorProfile() {
           </ul>
         </div>
         <div className="mb-6">
-          <h3 className="text-xl font-bold text-green-700 mb-2">Patient Reviews</h3>
+          <h3 className="text-xl font-bold text-indigo-700 mb-2">Patient Reviews</h3>
           <ul className="divide-y divide-gray-200">
             {mockReviews.map(r => (
               <li key={r.id} className="py-2">
@@ -82,7 +82,7 @@ export default function DoctorProfile() {
           </ul>
         </div>
         <div className="mb-6">
-          <h3 className="text-xl font-bold text-green-700 mb-2">Availability / Schedule</h3>
+          <h3 className="text-xl font-bold text-indigo-700 mb-2">Availability / Schedule</h3>
           <ul className="text-gray-700">
             {mockSchedule.map(s => (
               <li key={s.day}><span className="font-semibold">{s.day}:</span> {s.time}</li>
@@ -90,7 +90,7 @@ export default function DoctorProfile() {
           </ul>
         </div>
         <div className="flex justify-end">
-          <button className="bg-green-700 text-white px-6 py-3 rounded-lg font-bold text-lg shadow hover:bg-green-800 transition-colors">Book Appointment with {doctor.name}</button>
+          <button className="bg-indigo-700 text-white px-6 py-3 rounded-lg font-bold text-lg shadow hover:bg-indigo-800 transition-colors">Book Appointment with {doctor.name}</button>
         </div>
       </div>
     </motion.div>

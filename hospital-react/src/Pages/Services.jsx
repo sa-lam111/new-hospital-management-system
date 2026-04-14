@@ -61,7 +61,7 @@ export default function Services() {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
       <div className="container mx-auto px-4 py-8">
         <motion.div
           className="text-center mb-12"
@@ -70,7 +70,7 @@ export default function Services() {
           transition={{ duration: 0.7 }}
           viewport={{ once: true, amount: 0.2 }}
         >
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Our Medical Services</h1>
+          <h1 className="text-4xl font-bold text-indigo-800 mb-4">Our Medical Services</h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Comprehensive healthcare services delivered with compassion, expertise, and cutting-edge technology.
           </p>
@@ -82,7 +82,7 @@ export default function Services() {
               <input
                 type="text"
                 placeholder="Search services..."
-                className="w-full px-6 py-3 pl-12 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg transition-colors"
+                className="w-full px-6 py-3 pl-12 border-2 border-blue-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-lg transition-colors"
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
               <svg
@@ -102,7 +102,7 @@ export default function Services() {
 
         {loading ? (
           <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-green-600"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-indigo-600"></div>
           </div>
         ) : (
           <>
@@ -111,7 +111,7 @@ export default function Services() {
                 servicesToShow.map((service, idx) => (
                   <motion.div
                     key={service.id}
-                    className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col"
+                    className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-blue-100 group flex flex-col"
                     initial={{ opacity: 0, x: idx % 2 === 0 ? -60 : 60 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.7, delay: idx * 0.1 }}
@@ -121,7 +121,7 @@ export default function Services() {
                       <div className="flex items-center mb-6">
                         <div className="flex-1">
                           <h3 className="text-xl font-bold text-gray-800 mb-2">{service.name}</h3>
-                          <div className="w-12 h-1 bg-green-600 rounded-full"></div>
+                          <div className="w-12 h-1 bg-indigo-600 rounded-full"></div>
                         </div>
                       </div>
                       <p className="text-gray-600 text-base leading-relaxed mb-6 flex-1">
@@ -129,12 +129,12 @@ export default function Services() {
                       </p>
                       <div className="flex gap-3 mb-2">
                         <button 
-                          className="flex-1 bg-green-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-700 transition-colors shadow-md hover:shadow-lg"
+                          className="flex-1 bg-indigo-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-indigo-700 transition-colors shadow-md hover:shadow-lg"
                           onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
                         >
                           {openIdx === idx ? 'Hide Details' : 'Learn More'}
                         </button>
-                        <button className="px-4 py-3 border border-green-600 text-green-600 rounded-lg font-semibold hover:bg-green-50 transition-colors"
+                        <button className="px-4 py-3 border border-indigo-600 text-indigo-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
                           onClick={() => handleBookNow(service.name)}
                         >
                           Book Now
@@ -142,7 +142,7 @@ export default function Services() {
                       </div>
                       {openIdx === idx && (
                         <div className="mt-4 animate-fade-in text-gray-700">
-                          <div className="font-semibold text-green-700 mb-2">Features of {service.name}:</div>
+                          <div className="font-semibold text-indigo-700 mb-2">Features of {service.name}:</div>
                           {service.id === 1 && (
                             <ul className="list-disc pl-5 space-y-1">
                               <li>24/7 emergency room access</li>
@@ -281,7 +281,7 @@ export default function Services() {
               <div className="flex justify-center mt-12">
                 {!showAll ? (
                   <button
-                    className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors shadow-md hover:shadow-lg flex items-center gap-2"
+                    className="bg-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors shadow-md hover:shadow-lg flex items-center gap-2"
                     onClick={() => setShowAll(true)}
                   >
                     <span>Show All Services</span>
@@ -342,12 +342,12 @@ export default function Services() {
                           <label className="block text-gray-700 mb-1">Message (optional)</label>
                           <textarea name="message" value={bookForm.message} onChange={handleBookChange} className="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-primary" rows={3} />
                         </div>
-                        <button type="submit" className="w-full bg-green-700 text-white py-3 rounded-lg font-bold text-lg shadow hover:bg-primary/90 transition-colors">Book Service</button>
+                        <button type="submit" className="w-full bg-indigo-700 text-white py-3 rounded-lg font-bold text-lg shadow hover:bg-indigo-800 transition-colors">Book Service</button>
                       </form>
                     </>
                   ) : (
                     <div className="text-center py-8">
-                      <h2 className="text-2xl font-bold text-green-700 mb-4">Service Booked!</h2>
+                      <h2 className="text-2xl font-bold text-indigo-700 mb-4">Service Booked!</h2>
                       <p className="text-gray-700 mb-2">Thank you, {bookForm.name}. Your booking for <span className="font-semibold">{bookForm.service}</span> on <span className="font-semibold">{bookForm.date}</span> at <span className="font-semibold">{bookForm.time}</span> has been received.</p>
                       <p className="text-gray-500">We will contact you soon for confirmation.</p>
                       <button onClick={handleCloseBookModal} className="mt-6 bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700">Close</button>

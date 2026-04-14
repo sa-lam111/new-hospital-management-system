@@ -10,7 +10,7 @@ const aisha = {
     bankName: 'XYZ Bank',
   },
   goal: 2000000, // Naira
-  raised: 650000,
+  raised: 1050000,
   contact: {
     phone: '+234 801 234 5678',
     email: 'supportaisha@email.com',
@@ -28,21 +28,21 @@ export default function SpecialFunds() {
   };
 
   return (
-    <div className="bg-green-50 min-h-screen flex items-center justify-center py-12 px-4">
+    <div className="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex items-center justify-center py-12 px-4">
       <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl w-full">
         <div className="flex flex-col md:flex-row gap-8 items-center mb-8">
-          <img src={aisha.photo} alt="Aisha Yusuf" className="w-32 h-32 rounded-full object-cover border-4 border-green-200" />
+          <img src={aisha.photo} alt="Aisha Yusuf" className="w-32 h-32 rounded-full object-cover border-4 border-indigo-200" />
           <div>
-            <h1 className="text-3xl font-bold text-green-800 mb-2">Support Aisha</h1>
+            <h1 className="text-3xl font-bold text-indigo-800 mb-2">Support Aisha</h1>
             <p className="text-gray-700 mb-2">{aisha.story}</p>
           </div>
         </div>
         <div className="mb-6">
           <h2 className="text-xl font-bold text-primary mb-2">Bank Account Details</h2>
-          <div className="bg-green-100 rounded-lg p-4 flex flex-col md:flex-row md:items-center gap-4">
+          <div className="bg-blue-100 rounded-lg p-4 flex flex-col md:flex-row md:items-center gap-4 border border-indigo-200">
             <div>
               <div><span className="font-semibold">Account Name:</span> {aisha.bank.accountName}</div>
-              <div><span className="font-semibold">Account Number:</span> {aisha.bank.accountNumber} <button onClick={handleCopy} className="ml-2 text-xs bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700">{copied ? 'Copied!' : 'Copy'}</button></div>
+              <div><span className="font-semibold">Account Number:</span> {aisha.bank.accountNumber} <button onClick={handleCopy} className="ml-2 text-xs bg-indigo-600 text-white px-2 py-1 rounded hover:bg-indigo-700">{copied ? 'Copied!' : 'Copy'}</button></div>
               <div><span className="font-semibold">Bank:</span> {aisha.bank.bankName}</div>
             </div>
           </div>
@@ -53,7 +53,7 @@ export default function SpecialFunds() {
         <div className="mb-6">
           <h2 className="text-xl font-bold text-primary mb-2">Progress</h2>
           <div className="w-full bg-gray-200 rounded-full h-4 mb-2">
-            <div className="bg-green-600 h-4 rounded-full" style={{ width: `${progress}%` }}></div>
+            <div className="bg-indigo-600 h-4 rounded-full" style={{ width: `${progress}%` }}></div>
           </div>
           <div className="flex justify-between text-sm text-gray-600">
             <span>₦{aisha.raised.toLocaleString()} raised</span>
@@ -63,7 +63,7 @@ export default function SpecialFunds() {
         <div className="mb-6">
           <h2 className="text-xl font-bold text-primary mb-2">Share & Spread the Word</h2>
           <div className="flex gap-4">
-            <a href={`https://wa.me/?text=Support%20Aisha%20Yusuf%20with%20a%20donation!%20Bank%20details:%20${aisha.bank.accountNumber}%20(${aisha.bank.bankName})`} target="_blank" rel="noopener noreferrer" className="bg-green-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-600">WhatsApp</a>
+            <a href={`https://wa.me/?text=Support%20Aisha%20Yusuf%20with%20a%20donation!%20Bank%20details:%20${aisha.bank.accountNumber}%20(${aisha.bank.bankName})`} target="_blank" rel="noopener noreferrer" className="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700">WhatsApp</a>
             <a href={`https://www.facebook.com/sharer/sharer.php?u=https://yourwebsite.com/support-aisha`} target="_blank" rel="noopener noreferrer" className="bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-800">Facebook</a>
             <a href={`https://twitter.com/intent/tweet?text=Support%20Aisha%20Yusuf%20with%20a%20donation!%20Bank%20details:%20${aisha.bank.accountNumber}%20(${aisha.bank.bankName})`} target="_blank" rel="noopener noreferrer" className="bg-blue-400 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-500">Twitter</a>
           </div>

@@ -7,13 +7,13 @@ const topics = [
     details: (
       <div className="text-gray-700 mt-2 space-y-2">
         <div>
-          <span className="font-semibold text-green-700">First Trimester (Weeks 1-12):</span> Rapid development, morning sickness, fatigue, and the first ultrasound. Start prenatal vitamins and schedule your first prenatal visit.
+          <span className="font-semibold text-indigo-700">First Trimester (Weeks 1-12):</span> Rapid development, morning sickness, fatigue, and the first ultrasound. Start prenatal vitamins and schedule your first prenatal visit.
         </div>
         <div>
-          <span className="font-semibold text-green-700">Second Trimester (Weeks 13-26):</span> Energy returns, baby bump shows, anatomy scan, and feeling baby movements. Focus on balanced nutrition and regular check-ups.
+          <span className="font-semibold text-indigo-700">Second Trimester (Weeks 13-26):</span> Energy returns, baby bump shows, anatomy scan, and feeling baby movements. Focus on balanced nutrition and regular check-ups.
         </div>
         <div>
-          <span className="font-semibold text-green-700">Third Trimester (Weeks 27-40):</span> Growth spurt, more frequent doctor visits, birth planning, and preparing for delivery. Watch for signs of labor and keep your hospital bag ready.
+          <span className="font-semibold text-indigo-700">Third Trimester (Weeks 27-40):</span> Growth spurt, more frequent doctor visits, birth planning, and preparing for delivery. Watch for signs of labor and keep your hospital bag ready.
         </div>
       </div>
     )
@@ -50,11 +50,11 @@ const topics = [
     summary: "Prepare for labor and delivery with our guides and resources. Know what to expect and create your birth plan.",
     details: (
       <div className="text-gray-700 mt-2 space-y-2">
-        <div><span className="font-semibold text-green-700">Signs of Labor:</span> Regular contractions, water breaking, and lower back pain.</div>
-        <div><span className="font-semibold text-green-700">Birth Plan:</span> Discuss preferences for pain relief, delivery positions, and who will be present.</div>
-        <div><span className="font-semibold text-green-700">Hospital Bag:</span> Pack essentials for you and baby (clothes, toiletries, documents).</div>
-        <div><span className="font-semibold text-green-700">Support:</span> Have a support person or doula for encouragement and comfort.</div>
-        <div><span className="font-semibold text-green-700">After Delivery:</span> Learn about postpartum care, breastfeeding, and newborn care basics.</div>
+        <div><span className="font-semibold text-indigo-700">Signs of Labor:</span> Regular contractions, water breaking, and lower back pain.</div>
+        <div><span className="font-semibold text-indigo-700">Birth Plan:</span> Discuss preferences for pain relief, delivery positions, and who will be present.</div>
+        <div><span className="font-semibold text-indigo-700">Hospital Bag:</span> Pack essentials for you and baby (clothes, toiletries, documents).</div>
+        <div><span className="font-semibold text-indigo-700">Support:</span> Have a support person or doula for encouragement and comfort.</div>
+        <div><span className="font-semibold text-indigo-700">After Delivery:</span> Learn about postpartum care, breastfeeding, and newborn care basics.</div>
       </div>
     )
   },
@@ -70,18 +70,18 @@ const Pregnancy = () => {
   return (
     <div className="bg-gray-200 min-h-screen p-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-green-800 mb-4">Pregnancy Care</h1>
+        <h1 className="text-4xl font-bold text-indigo-800 mb-4">Pregnancy Care</h1>
         <p className="text-lg text-gray-700 mb-6">
           Welcome to our pregnancy care section. We provide comprehensive resources and support for expectant mothers.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {topics.map((topic, idx) => (
             <div key={topic.title} className="bg-white p-6 rounded-lg shadow-md flex flex-col">
-              <h2 className="text-2xl font-semibold text-green-700 mb-2">{topic.title}</h2>
+              <h2 className="text-2xl font-semibold text-indigo-700 mb-2">{topic.title}</h2>
               <p className="text-gray-600 flex-1">{topic.summary}</p>
               <button
                 onClick={() => handleToggle(idx)}
-                className="mt-4 bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded transition-colors"
+                className="mt-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded transition-colors"
               >
                 {openIdx === idx ? 'Hide Details' : 'Learn More'}
               </button>
@@ -97,7 +97,7 @@ const Pregnancy = () => {
 
       {/* Due Date Calculator */}
       <div className="max-w-2xl mx-auto mt-12 bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-2xl font-bold text-green-700 mb-4">Interactive Due Date Calculator</h2>
+        <h2 className="text-2xl font-bold text-indigo-700 mb-4">Interactive Due Date Calculator</h2>
         <DueDateCalculator />
       </div>
     </div>
@@ -120,24 +120,24 @@ function DueDateCalculator() {
 
   return (
     <div>
-      <label className="block text-green-800 font-semibold mb-2">First Day of Last Period</label>
+      <label className="block text-indigo-800 font-semibold mb-2">First Day of Last Period</label>
       <input
         type="date"
         value={lastPeriod}
         onChange={e => setLastPeriod(e.target.value)}
-        className="border border-green-300 rounded px-4 py-2 mb-4 w-full focus:ring-2 focus:ring-green-400"
+        className="border border-indigo-300 rounded px-4 py-2 mb-4 w-full focus:ring-2 focus:ring-indigo-400"
       />
       <button
         onClick={calculateDueDate}
-        className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded transition-colors"
+        className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded transition-colors"
         disabled={!lastPeriod}
       >
         Calculate Due Date
       </button>
       {dueDate && (
-        <div className="mt-6 p-4 bg-green-50 border-l-4 border-green-400 rounded">
-          <span className="block text-green-700 font-semibold">Estimated Due Date:</span>
-          <span className="text-xl font-bold text-green-800">{dueDate}</span>
+        <div className="mt-6 p-4 bg-blue-50 border-l-4 border-indigo-400 rounded">
+          <span className="block text-indigo-700 font-semibold">Estimated Due Date:</span>
+          <span className="text-xl font-bold text-indigo-800">{dueDate}</span>
         </div>
       )}
     </div>

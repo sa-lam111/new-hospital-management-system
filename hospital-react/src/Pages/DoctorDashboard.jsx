@@ -1,31 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
-const doctor = {
-  name: 'Dr. Sarah Johnson',
-  email: 'sarah.johnson@hospital.com',
-  specialty: 'Cardiology',
-  memberSince: '2015-03-10',
-  profilePicture: 'https://images.pexels.com/photos/1181696/pexels-photo-1181696.jpeg',
-};
+const DoctorDashboard = () => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  
+  const doctor = {
+    name: user?.name || 'Dr. Doctor',
+    email: user?.email || 'doctor@hospital.com',
+    specialty: user?.specialty || 'General Medicine',
+    memberSince: user?.createdAt || '2015-03-10',
+    profilePicture: user?.profilePicture || 'https://images.pexels.com/photos/1181696/pexels-photo-1181696.jpeg',
+  }; 
 
-const initialAppointments = [
-  { id: 1, patient: 'Ngozi Okafor', time: '10:00 AM', date: '2024-08-15', reason: 'Check-up', status: 'Upcoming', notes: '', completed: false, noShow: false },
-  { id: 2, patient: 'Emeka Adeyemi', time: '11:30 AM', date: '2024-08-15', reason: 'Follow-up', status: 'Upcoming', notes: '', completed: false, noShow: false },
-];
+  const initialAppointments = [
+    { id: 1, patient: 'Ngozi Okafor', time: '10:00 AM', date: '2026-01-15', reason: 'Check-up', status: 'Upcoming', notes: '', completed: false, noShow: false },
+    { id: 2, patient: 'Emeka Adeyemi', time: '11:30 AM', date: '2026-01-15', reason: 'Follow-up', status: 'Upcoming', notes: '', completed: false, noShow: false },
+  ];
 
-const initialPatients = [
-  { id: 1, name: 'Ngozi Okafor', lastVisit: '2024-07-20', history: ['2024-07-20: Check-up', '2024-06-10: Blood Test'], records: ['Blood Test.pdf'], prescriptions: ['Atorvastatin'] },
-  { id: 2, name: 'Emeka Adeyemi', lastVisit: '2024-07-15', history: ['2024-07-15: Follow-up'], records: ['ECG.pdf'], prescriptions: ['Metformin'] },
-];
+  const initialPatients = [
+    { id: 1, name: 'Ngozi Okafor', lastVisit: '2025-07-20', history: ['2024-07-20: Check-up', '2024-06-10: Blood Test'], records: ['Blood Test.pdf'], prescriptions: ['Atorvastatin'] },
+    { id: 2, name: 'Emeka Adeyemi', lastVisit: '2025-07-15', history: ['2024-07-15: Follow-up'], records: ['ECG.pdf'], prescriptions: ['Metformin'] },
+  ];
 
-const messages = [
-  { id: 1, from: 'Admin', content: 'Please update your profile.', date: '2024-08-10' },
-  { id: 2, from: 'Ngozi Okafor', content: 'Thank you for the consultation!', date: '2024-08-09' },
-];
-
-export default function DoctorDashboard() {
+  const messages = [
+    { id: 1, from: 'Admin', content: 'Please update your profile.', date: '2024-08-10' },
+    { id: 2, from: 'Ngozi Okafor', content: 'Thank you for the consultation!', date: '2024-08-09' },
+  ];
   const [appointments, setAppointments] = useState(initialAppointments);
   const [patients, setPatients] = useState(() => {
     const stored = localStorage.getItem('patients');
@@ -48,7 +51,10 @@ export default function DoctorDashboard() {
   // Analytics mock
   const patientsSeen = 28;
   const appointmentTrends = [1, 3, 5, 4, 6, 2, 7]; // mock data for chart
-  const navigate = useNavigate();
+  const handleLogout = async () => {
+    await logout();
+    navigate('/login', { replace: true });
+  };
 
   // Save patients to localStorage whenever it changes
   useEffect(() => {
@@ -129,7 +135,7 @@ export default function DoctorDashboard() {
     <motion.div className="bg-gray-100 min-h-screen" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
       <div className="container mx-auto px-4 py-12">
         <div className="flex justify-end mb-6">
-          <button onClick={() => navigate('/login')} className="bg-red-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors">Logout</button>
+          <button onClick={handleLogout} className="bg-red-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors">Logout</button>
         </div>
         {/* Doctor Profile Section */}
         <motion.section className="bg-white rounded-2xl shadow-lg p-8 mb-12 flex items-center gap-8" initial={{ x: -40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ duration: 0.6 }}>
@@ -166,7 +172,7 @@ export default function DoctorDashboard() {
                   <div key={i} className="flex flex-col items-center w-8">
                     <span className="mb-1 text-xs font-semibold text-blue-700">{v}</span>
                     <div
-                      className="w-6 transition-all duration-300 rounded-t-xl shadow-md bg-gradient-to-t from-blue-400 to-green-400"
+                      className="w-6 transition-all duration-300 rounded-t-xl shadow-md bg-gradient-to-t from-blue-400 to-indigo-400"
                       style={{ height: `${v * 10 + 10}px` }}
                     ></div>
                     <span className="mt-2 text-xs text-gray-500">{['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][i]}</span>
@@ -192,7 +198,7 @@ export default function DoctorDashboard() {
             {appointments.filter(appointment => !appointment.completed).map((appointment, idx) => (
               <motion.div
                 key={appointment.id}
-                className={`bg-white rounded-xl shadow-md p-6 border-l-4 ${appointment.completed ? 'border-green-600' : appointment.noShow ? 'border-red-600' : 'border-blue-600'}`}
+                className={`bg-white rounded-xl shadow-md p-6 border-l-4 ${appointment.completed ? 'border-indigo-600' : appointment.noShow ? 'border-red-600' : 'border-blue-600'}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + idx * 0.1, duration: 0.5 }}
@@ -203,14 +209,14 @@ export default function DoctorDashboard() {
                 <div className="flex gap-2 mt-4 flex-wrap">
                   <button onClick={() => handleOpenReschedule(appointment)} className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Reschedule</button>
                   <button className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors">Cancel</button>
-                  <button onClick={() => handleMarkCompleted(appointment.id)} className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">Mark Completed</button>
+                  <button onClick={() => handleMarkCompleted(appointment.id)} className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Mark Completed</button>
                   <button onClick={() => handleMarkNoShow(appointment.id)} className="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors">Mark No-show</button>
                 </div>
                 <div className="mt-4">
                   <label className="block text-gray-700 mb-1">Private Notes</label>
                   <textarea value={appointment.notes} onChange={e => handleNoteChange(appointment.id, e.target.value)} className="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-primary" rows={2} placeholder="Add notes..." />
                 </div>
-                {appointment.completed && <div className="mt-2 text-green-700 font-semibold">Completed</div>}
+                {appointment.completed && <div className="mt-2 text-indigo-700 font-semibold">Completed</div>}
                 {appointment.noShow && <div className="mt-2 text-yellow-700 font-semibold">No-show</div>}
               </motion.div>
             ))}
@@ -244,7 +250,7 @@ export default function DoctorDashboard() {
                 </>
               ) : (
                 <div className="text-center py-8">
-                  <h2 className="text-2xl font-bold text-green-700 mb-4">Appointment Rescheduled!</h2>
+                  <h2 className="text-2xl font-bold text-indigo-700 mb-4">Appointment Rescheduled!</h2>
                   <p className="text-gray-700 mb-2">The appointment for <span className="font-semibold">{selectedAppointment.patient}</span> has been rescheduled to <span className="font-semibold">{rescheduleForm.date}</span> at <span className="font-semibold">{rescheduleForm.time}</span>.</p>
                   <p className="text-gray-700 mb-2">Reason: <span className="font-semibold">{rescheduleForm.reason}</span></p>
                   <button onClick={handleCloseReschedule} className="mt-6 bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700">Close</button>
@@ -298,7 +304,7 @@ export default function DoctorDashboard() {
                 </ul>
               </div>
               <div className="mt-4 flex gap-2">
-                <button className="bg-green-600 text-white px-4 py-2 rounded-lg mr-2">Write Prescription</button>
+                <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg mr-2">Write Prescription</button>
                 <button className="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg">Upload Record</button>
                 <button className="bg-red-500 text-white px-4 py-2 rounded-lg" onClick={() => handleRemovePatient(selectedPatient.id)}>Remove Patient</button>
               </div>
@@ -400,4 +406,6 @@ export default function DoctorDashboard() {
       </div>
     </motion.div>
   );
-} 
+}
+
+export default DoctorDashboard; 
