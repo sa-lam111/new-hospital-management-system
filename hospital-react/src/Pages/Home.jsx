@@ -548,119 +548,181 @@ export default function Home() {
       </motion.section>
 
       {/* ==================== FOOTER ==================== */}
-      <footer className="bg-gray-950 text-gray-300 py-16 border-t border-gray-800">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-            {/* Contact Information */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h4 className="text-white font-bold text-lg mb-6 uppercase">Contact Information</h4>
-              <div className="space-y-4 text-sm">
-                <div>
-                  <p className="text-gray-400 mb-2">
-                    123 Hospital Street, Medical District<br />
-                    Healthcare City, HC 12345<br />
-                    Fountain University, Osun, Nigeria
-                  </p>
+      <footer className="bg-slate-950 text-gray-300">
+        {/* Main Footer Content */}
+        <div className="border-b border-slate-800">
+          <div className="container mx-auto px-4 max-w-7xl py-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-8">
+              {/* Company Info */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h3 className="text-white font-bold text-lg mb-4">Hospital Management System</h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  Providing comprehensive healthcare solutions with cutting-edge technology and compassionate patient care at Fountain University.
+                </p>
+                <div className="flex gap-4">
+                  <a href="#" className="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center hover:bg-indigo-700 transition">
+                    <span className="text-white text-lg">f</span>
+                  </a>
+                  <a href="#" className="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center hover:bg-indigo-700 transition">
+                    <span className="text-white text-lg">𝕏</span>
+                  </a>
+                  <a href="#" className="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center hover:bg-indigo-700 transition">
+                    <span className="text-white text-lg">in</span>
+                  </a>
                 </div>
-                <div>
-                  <p className="text-gray-400 mb-1">
-                    <span className="font-semibold text-indigo-400">Reception:</span> +1 (555) 123-4567
-                  </p>
-                  <p className="text-gray-400 mb-1">
-                    <span className="font-semibold text-indigo-400">Complaints:</span> +1 (555) 123-4568
-                  </p>
-                  <p className="text-gray-400">
-                    <span className="font-semibold text-indigo-400">Billing:</span> +1 (555) 123-4569
-                  </p>
-                </div>
-                <div>
-                  <p className="text-gray-400">
-                    <a href="mailto:info@hospital.com" className="hover:text-indigo-400 transition-colors">
+              </motion.div>
+
+              {/* Quick Links */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-6">Navigation</h4>
+                <ul className="space-y-3">
+                  <li>
+                    <a href="/" className="text-gray-400 hover:text-indigo-400 transition duration-200 text-sm">
+                      Home
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/about" className="text-gray-400 hover:text-indigo-400 transition duration-200 text-sm">
+                      About Us
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/services" className="text-gray-400 hover:text-indigo-400 transition duration-200 text-sm">
+                      Services
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/doctors" className="text-gray-400 hover:text-indigo-400 transition duration-200 text-sm">
+                      Our Doctors
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/contact" className="text-gray-400 hover:text-indigo-400 transition duration-200 text-sm">
+                      Contact
+                    </a>
+                  </li>
+                </ul>
+              </motion.div>
+
+              {/* Services */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-6">Services</h4>
+                <ul className="space-y-3">
+                  <li>
+                    <a href="/services" className="text-gray-400 hover:text-indigo-400 transition duration-200 text-sm">
+                      Emergency Care
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/services" className="text-gray-400 hover:text-indigo-400 transition duration-200 text-sm">
+                      Cardiology
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/services" className="text-gray-400 hover:text-indigo-400 transition duration-200 text-sm">
+                      Pediatrics
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/services" className="text-gray-400 hover:text-indigo-400 transition duration-200 text-sm">
+                      Surgery
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/services" className="text-gray-400 hover:text-indigo-400 transition duration-200 text-sm">
+                      Diagnostics
+                    </a>
+                  </li>
+                </ul>
+              </motion.div>
+
+              {/* Contact Info */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-6">Contact</h4>
+                <div className="space-y-4 text-sm">
+                  <div>
+                    <p className="text-gray-500 text-xs uppercase tracking-wide mb-1">Address</p>
+                    <p className="text-gray-400">
+                      Fountain University<br />
+                      Osogbo, Osun State<br />
+                      Nigeria
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-gray-500 text-xs uppercase tracking-wide mb-1">Phone</p>
+                    <a href="tel:+2341234567890" className="text-gray-400 hover:text-indigo-400 transition">
+                      +234 (123) 456-7890
+                    </a>
+                  </div>
+                  <div>
+                    <p className="text-gray-500 text-xs uppercase tracking-wide mb-1">Email</p>
+                    <a href="mailto:info@hospital.com" className="text-gray-400 hover:text-indigo-400 transition">
                       info@hospital.com
                     </a>
-                  </p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-
-            {/* Quick Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <h4 className="text-white font-bold text-lg mb-6 uppercase">Additional Links</h4>
-              <ul className="space-y-3 text-sm">
-                <li>
-                  <a href="/" className="hover:text-indigo-400 transition-colors">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a href="/about" className="hover:text-indigo-400 transition-colors">
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a href="/services" className="hover:text-indigo-400 transition-colors">
-                    Our Specialities
-                  </a>
-                </li>
-                <li>
-                  <a href="/doctors" className="hover:text-indigo-400 transition-colors">
-                    Articles
-                  </a>
-                </li>
-                <li>
-                  <a href="/contact" className="hover:text-indigo-400 transition-colors">
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-            </motion.div>
-
-            {/* Our Partners */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <h4 className="text-white font-bold text-lg mb-6 uppercase">Our Partners</h4>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-gray-800 rounded p-4 flex items-center justify-center h-16 hover:bg-gray-700 transition-colors">
-                  <span className="text-gray-400 text-sm">Partner 1</span>
-                </div>
-                <div className="bg-gray-800 rounded p-4 flex items-center justify-center h-16 hover:bg-gray-700 transition-colors">
-                  <span className="text-gray-400 text-sm">Partner 2</span>
-                </div>
-                <div className="bg-gray-800 rounded p-4 flex items-center justify-center h-16 hover:bg-gray-700 transition-colors">
-                  <span className="text-gray-400 text-sm">Partner 3</span>
-                </div>
-                <div className="bg-gray-800 rounded p-4 flex items-center justify-center h-16 hover:bg-gray-700 transition-colors">
-                  <span className="text-gray-400 text-sm">Partner 4</span>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
-
-          {/* Copyright */}
-          <motion.div
-            className="border-t border-gray-800 pt-8 mt-8 text-center text-sm text-gray-400"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <p>&copy; Copyright {new Date().getFullYear()} | All Rights Reserved</p>
-          </motion.div>
         </div>
+
+        {/* Bottom Footer */}
+        <motion.div
+          className="bg-slate-900 border-t border-slate-800 py-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <div className="container mx-auto px-4 max-w-7xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+              {/* Copyright */}
+              <div className="text-center md:text-left">
+                <p className="text-gray-400 text-sm">
+                  &copy; {new Date().getFullYear()} Hospital Management System. All rights reserved.
+                </p>
+              </div>
+
+              {/* Legal Links */}
+              <div className="flex justify-center gap-6 text-sm">
+                <a href="#" className="text-gray-400 hover:text-indigo-400 transition">
+                  Privacy Policy
+                </a>
+                <a href="#" className="text-gray-400 hover:text-indigo-400 transition">
+                  Terms of Service
+                </a>
+                <a href="#" className="text-gray-400 hover:text-indigo-400 transition">
+                  Compliance
+                </a>
+              </div>
+
+              {/* Certifications */}
+              <div className="text-center md:text-right text-xs text-gray-500">
+                <p>✓ HIPAA Compliant | ✓ ISO 27001 Certified</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </footer>
     </div>
   );
