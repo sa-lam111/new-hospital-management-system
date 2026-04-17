@@ -29,7 +29,10 @@ const DoctorDashboard = () => {
     { id: 1, from: 'Admin', content: 'Please update your profile.', date: '2026-08-10' },
     { id: 2, from: 'Ngozi Okafor', content: 'Thank you for the consultation!', date: '2026-08-09' },
   ];
-  const [appointments, setAppointments] = useState(initialAppointments);
+  const [appointments, setAppointments] = useState(() => {
+    const stored = localStorage.getItem('appointments');
+    return stored ? JSON.parse(stored) : initialAppointments;
+  });
   const [patients, setPatients] = useState(() => {
     const stored = localStorage.getItem('patients');
     return stored ? JSON.parse(stored) : initialPatients;
@@ -56,21 +59,14 @@ const DoctorDashboard = () => {
     navigate('/login', { replace: true });
   };
 
-  // Save patients to localStorage whenever it changes
+  // Save patients and appointments to localStorage whenever they change
   useEffect(() => {
-    // Replace old names if they exist in localStorage
-    const updatedPatients = patients.map(p => {
-      if (p.name === 'Jane Smith') return { ...p, name: 'Ngozi Okafor' };
-      if (p.name === 'John Doe') return { ...p, name: 'Emeka Adeyemi' };
-      return p;
-    });
-    if (JSON.stringify(updatedPatients) !== JSON.stringify(patients)) {
-      setPatients(updatedPatients);
-      localStorage.setItem('patients', JSON.stringify(updatedPatients));
-    } else {
-      localStorage.setItem('patients', JSON.stringify(patients));
-    }
+    localStorage.setItem('patients', JSON.stringify(patients));
   }, [patients]);
+
+  useEffect(() => {
+    localStorage.setItem('appointments', JSON.stringify(appointments));
+  }, [appointments]);
 
   // Appointment actions
   const handleMarkCompleted = (id) => setAppointments(appts => appts.map(a => a.id === id ? { ...a, completed: true, noShow: false } : a));
