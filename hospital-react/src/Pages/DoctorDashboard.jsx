@@ -21,13 +21,13 @@ const DoctorDashboard = () => {
   ];
 
   const initialPatients = [
-    { id: 1, name: 'Ngozi Okafor', lastVisit: '2025-07-20', history: ['2024-07-20: Check-up', '2024-06-10: Blood Test'], records: ['Blood Test.pdf'], prescriptions: ['Atorvastatin'] },
-    { id: 2, name: 'Emeka Adeyemi', lastVisit: '2025-07-15', history: ['2024-07-15: Follow-up'], records: ['ECG.pdf'], prescriptions: ['Metformin'] },
+    { id: 1, name: 'Ngozi Okafor', lastVisit: '2026-07-20', history: ['2026-07-20: Check-up', '2026-06-10: Blood Test'], records: ['Blood Test.pdf'], prescriptions: ['Atorvastatin'] },
+    { id: 2, name: 'Emeka Adeyemi', lastVisit: '2026-07-15', history: ['2026-07-15: Follow-up'], records: ['ECG.pdf'], prescriptions: ['Metformin'] },
   ];
 
   const messages = [
-    { id: 1, from: 'Admin', content: 'Please update your profile.', date: '2024-08-10' },
-    { id: 2, from: 'Ngozi Okafor', content: 'Thank you for the consultation!', date: '2024-08-09' },
+    { id: 1, from: 'Admin', content: 'Please update your profile.', date: '2026-08-10' },
+    { id: 2, from: 'Ngozi Okafor', content: 'Thank you for the consultation!', date: '2026-08-09' },
   ];
   const [appointments, setAppointments] = useState(initialAppointments);
   const [patients, setPatients] = useState(() => {

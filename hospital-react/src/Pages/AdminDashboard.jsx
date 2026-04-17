@@ -22,7 +22,7 @@ const AdminDashboard = () => {
     name: user?.name || 'Administrator',
     email: user?.email || 'admin@hospital.com',
     role: 'System Administrator',
-    memberSince: user?.createdAt || '2024-01-01',
+    memberSince: user?.createdAt || '2026-01-01',
     profilePicture: user?.profilePicture || 'https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg',
   };
 

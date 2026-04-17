@@ -21,24 +21,24 @@ const PatientHomepage = () => {
   const patient = {
     name: user?.name || 'Patient',
     email: user?.email || 'patient@hospital.com',
-    memberSince: user?.createdAt || '2022-01-15',
+    memberSince: user?.createdAt || '2026-01-15',
     profilePicture: user?.profilePicture || 'https://tse3.mm.bing.net/th/id/OIP.pwqclO0wa23CEQ6LXm-BZAHaE7?rs=1&pid=ImgDetMain&o=7&rm=3',
   };
 
   // Mock data (will be replaced with API calls)
   const medicalRecords = [
-    { id: 1, title: 'Annual Check-up', date: '2023-07-20', summary: 'Overall health is good. Recommended to continue a healthy lifestyle.' },
-    { id: 2, title: 'Blood Test Results', date: '2023-07-22', summary: 'All markers within normal range.' },
+    { id: 1, title: 'Annual Check-up', date: '2026-07-20', summary: 'Overall health is good. Recommended to continue a healthy lifestyle.' },
+    { id: 2, title: 'Blood Test Results', date: '2026-07-22', summary: 'All markers within normal range.' },
   ];
 
   const messages = [
-    { id: 1, from: 'Dr. Sarah Johnson', content: 'Your test results are ready.', date: '2024-08-10' },
-    { id: 2, from: 'Hospital Admin', content: 'Your appointment has been confirmed.', date: '2024-08-09' },
+    { id: 1, from: 'Dr. Sarah Johnson', content: 'Your test results are ready.', date: '2026-08-10' },
+    { id: 2, from: 'Hospital Admin', content: 'Your appointment has been confirmed.', date: '2026-08-09' },
   ];
 
   const bills = [
-    { id: 1, description: 'Consultation Fee', amount: '₦50,000', status: 'Paid', date: '2024-07-15' },
-    { id: 2, description: 'Blood Test', amount: '₦3,000', status: 'Unpaid', date: '2024-07-20' },
+    { id: 1, description: 'Consultation Fee', amount: '₦50,000', status: 'Paid', date: '2026-07-15' },
+    { id: 2, description: 'Blood Test', amount: '₦3,000', status: 'Unpaid', date: '2026-07-20' },
   ];
 
   const emergencyContacts = [
@@ -49,7 +49,7 @@ const PatientHomepage = () => {
   const insurance = {
     provider: 'Family Plan',
     policyNumber: 'HP-123456789',
-    validTill: '2025-12-31',
+    validTill: '2026-12-31',
   };
 
   const prescriptions = [
