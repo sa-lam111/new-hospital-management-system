@@ -114,15 +114,12 @@ export default function SignUp() {
           </div>
           <div>
             <label className="block text-gray-700 mb-1">Account Type</label>
-            <select
-              name="userType"
-              value={form.userType}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-            >
-              <option value="patient">Patient</option>
-              <option value="doctor">Doctor</option>
-            </select>
+            <div className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 text-gray-600">
+              Patient
+            </div>
+            <p className="text-xs text-gray-500 mt-1">
+              Doctor registration requires hospital staff approval. Contact admin@hospital.com to request doctor access.
+            </p>
           </div>
           <div>
             <label className="block text-gray-700 mb-1">Password</label>

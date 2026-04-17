@@ -25,7 +25,11 @@ const generateToken = (id) => {
 // @route POST /api/auth/signup
 // @desc Register a new user and send verification email
 export const signup = asyncHandler(async (req, res) => {
-  const { name, email, phone, password, confirmPassword, userType = 'patient' } = req.body;
+  const { name, email, phone, password, confirmPassword } = req.body;
+  
+  // SECURITY: Force all new signups to be 'patient' role
+  // Doctor role must be assigned by admin only
+  const userType = 'patient';
 
   // Validation
   if (!name || !email || !phone || !password || !confirmPassword) {
